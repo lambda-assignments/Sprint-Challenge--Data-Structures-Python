@@ -1,11 +1,11 @@
 import unittest
-from ring_buffer import RingBuffer
+from .ring_buffer import RingBuffer
 
 class RingBufferTests(unittest.TestCase):
     def setUp(self):
         self.capacity = 5
         self.buffer = RingBuffer(self.capacity)
-    
+
     def test_new_buffer_has_appropriate_capacity(self):
         self.assertEqual(self.buffer.capacity, self.capacity)
 
@@ -14,6 +14,7 @@ class RingBufferTests(unittest.TestCase):
         self.assertEqual(self.buffer.get(), ['a'])
 
     def test_filling_buffer_to_capacity(self):
+        self.buffer = RingBuffer(capacity=5)
         self.buffer.append('a')
         self.buffer.append('b')
         self.buffer.append('c')
